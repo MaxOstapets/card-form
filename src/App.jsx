@@ -9,8 +9,14 @@ const App = () => {
 
   return (
     <>
+    <div className="flex justify-evenly items-center mt-32">
+      <div className="flex flex-col gap-12 ">
+        <Card cardNumber={cardNumber} />
+        <img src="/images/images/bg-card-back.png" className="w-96 h-52 ml-16" alt="" />
+      </div>
+
       <Form cardNumber={cardNumber} handleChanger={handleChanger} />
-      <Card cardNumber={cardNumber} />
+    </div>
     </>
   );
 };
