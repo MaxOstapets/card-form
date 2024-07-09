@@ -1,17 +1,17 @@
 import React from "react";
 
-const Form = ({ cardNumber, handleChanger }) => {
+const Form = ({ cardNumber, cardNumberChanger, cardholderName, cardholderNameChanger }) => {
   return (
     <form className="flex items-center justify-center flex-col gap-8">
       <div className="flex items-center justify-center flex-col gap-10 text-indigo-800">
         <div className="flex items-start flex-col gap-1 ">
           <label className="text-sm">Cardholder Name</label>
-          <input type="text" name="cardHolderName" className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3"/>
+          <input type="text" name="cardHolderName" onChange={cardholderNameChanger} value={cardholderName} className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3"/>
         </div>
 
         <div className="flex items-start flex-col gap-1">
           <label>Card Number</label>
-          <input type="text" value={cardNumber} onChange={handleChanger} className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3"/>
+          <input type="text" value={cardNumber} onChange={cardNumberChanger} className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3"/>
         </div>
 
         <div>
