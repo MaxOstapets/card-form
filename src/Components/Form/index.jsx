@@ -1,6 +1,12 @@
 import React from "react";
+import { CardContext } from '../../Provider/CardContext'
+import { CardholderContext } from "../../Provider/Cardholder";
+import { useContext } from "react";
 
-const Form = ({ cardNumber, cardNumberChanger, cardholderName, cardholderNameChanger, month, monthChanger, year, yearChanger, cvc, cvcChanger}) => {
+const Form = () => {
+  const { cardNumberChanger, cardNumber, month, monthChanger, year, yearChanger, cvc, cvcChanger } = useContext(CardContext)
+  const { cardholderName, cardholderNameChanger } = useContext(CardholderContext)
+
   return (
     <form className="flex items-center justify-center flex-col gap-8">
       <div className="flex items-center justify-center flex-col gap-10 text-indigo-800">
