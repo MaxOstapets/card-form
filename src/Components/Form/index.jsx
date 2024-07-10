@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = ({ cardNumber, cardNumberChanger, cardholderName, cardholderNameChanger }) => {
+const Form = ({ cardNumber, cardNumberChanger, cardholderName, cardholderNameChanger, month, monthChanger, year, yearChanger, cvc, cvcChanger}) => {
   return (
     <form className="flex items-center justify-center flex-col gap-8">
       <div className="flex items-center justify-center flex-col gap-10 text-indigo-800">
@@ -18,11 +18,11 @@ const Form = ({ cardNumber, cardNumberChanger, cardholderName, cardholderNameCha
           <label className="text-sm">EXP. DATE MM/YY CVC</label>
           <div className="flex items-center justify-center gap-5">
             <div className="flex gap-2">
-             <input type="text" name="expMonth" placeholder="MM" className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"/>
-             <input type="text" name="expYear" placeholder="YY" className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"/>
+             <input type="text" name="expMonth" placeholder="MM" value={month} onChange={monthChanger} className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"/>
+             <input type="text" name="expYear" placeholder="YY" value={year} onChange={yearChanger} className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"/>
             </div>
             
-            <input type="text" name="cvc" placeholder="CVC" className="w-32 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"/>
+            <input type="text" name="cvc" placeholder="CVC" value={cvc} onChange={cvcChanger} className="w-32 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"/>
           </div>
         </div>
       </div>
