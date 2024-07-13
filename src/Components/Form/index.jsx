@@ -1,11 +1,14 @@
 import React from "react";
 import { CardContext } from '../../Provider/CardContext'
 import { CardholderContext } from "../../Provider/Cardholder";
+// import { ValidationContext } from "../../Provider/Validation";
 import { useContext } from "react";
 
 const Form = () => {
-  const { cardNumberChanger, cardNumber, month, monthChanger, year, yearChanger, cvc, cvcChanger } = useContext(CardContext)
+  let { cardNumberChanger, cardNumber, month, monthChanger, year, yearChanger, cvc, cvcChanger } = useContext(CardContext)
   const { cardholderName, cardholderNameChanger } = useContext(CardholderContext)
+  // const { validation, validationTest } = useContext(ValidationContext)
+  const validation = /^[a-zA-Z.,\-\s]+$/
 
   return (
     <form className="flex items-center justify-center flex-col gap-8">
@@ -17,7 +20,9 @@ const Form = () => {
 
         <div className="flex items-start flex-col gap-1">
           <label>Card Number</label>
-          <input type="text" value={cardNumber} onChange={cardNumberChanger} className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3"/>
+          {validation.test(cardNumber) ? <span>Error</span> : 
+            <input type="text" value={cardNumber} onChange={cardNumberChanger} className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3"/>
+          }
         </div>
 
         <div>
