@@ -14,8 +14,14 @@ const CardProvider = ({ children }) => {
     register,
     handleSubmit,
     setError,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm();
+  
+  const func = () => {
+    const singleValue = getValues(cardholderName)
+    return singleValue
+  }
 
   const onSubmit = async (data) => {
     try {
@@ -27,7 +33,7 @@ const CardProvider = ({ children }) => {
       });
     }
   };
-  
+
   const cardholderNameChanger = (e) => {
     setCardholderName(e.target.value);
   };
@@ -65,6 +71,8 @@ const CardProvider = ({ children }) => {
         errors,
         isSubmitting,
         onSubmit,
+        getValues,
+        func
       }}
     >
       {children}
