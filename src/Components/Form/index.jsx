@@ -25,7 +25,7 @@ const Form = () => {
       className="flex items-center justify-center flex-col gap-8"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex items-center justify-center flex-col gap-10 text-indigo-800">
+      <div className="flex items-center justify-center flex-col gap-10 text-indigo-800 sm:gap-5">
         <div className="flex items-start flex-col gap-1 ">
           <label className="text-sm">Cardholder Name</label>
           <input

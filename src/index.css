@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   background: url(images/images/bg-main-desktop.png);
   background-repeat: no-repeat;
+}
+
+@media (max-width: 376px) {
+  body {
+    background: url(images/images/bg-main-mobile.png);
+    background-repeat: no-repeat;
+  }
 }

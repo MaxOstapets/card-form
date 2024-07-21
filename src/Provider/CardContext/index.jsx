@@ -21,7 +21,7 @@ const CardProvider = ({ children }) => {
   const onSubmit = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 700));
-      console.log(data);
+      console.log("Sign up data: ", data);
     } catch (error) {
       setError("cardholderName", {
         message: "Name is required",
