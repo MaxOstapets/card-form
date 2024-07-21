@@ -1,6 +1,7 @@
 import Form from "./Components/Form";
 import Card from "./Components/Card";
 import Cvc from "./Components/Сvc";
+// import { sendCustomEmail } from "./email";
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
         </div>
 
         <Form />
-      </div>
+      </div>  
+      {/* <button onClick={sendCustomEmail}>Send</button> */}
     </>
   );
 };

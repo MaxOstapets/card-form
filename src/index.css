@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body{
-  background: url(../public/images/images/bg-main-desktop.png);
+  background: url(images/images/bg-main-desktop.png);
   background-repeat: no-repeat;
 }

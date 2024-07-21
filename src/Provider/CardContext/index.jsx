@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 const CardContext = createContext();
@@ -14,25 +14,40 @@ const CardProvider = ({ children }) => {
     register,
     handleSubmit,
     setError,
-    getValues,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm();
   
-  const func = () => {
-    const singleValue = getValues(cardholderName)
-    return singleValue
-  }
-
   const onSubmit = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 700));
       console.log(data);
     } catch (error) {
-      setError("name", {
+      setError("cardholderName", {
         message: "Name is required",
       });
     }
   };
+  
+  useEffect(() => {
+    register("cardholderName", { required: "Cardholder name is required" });
+  }, [register]);
+
+  useEffect(() => {
+    register("cardNumber", { required: "Card number is required" });
+  }, [register]);
+
+  useEffect(() => {
+    register("month", { required: "Month is required" });
+  }, [register]);
+
+  useEffect(() => {
+    register("year", { required: "Year is required" });
+  }, [register]);
+
+  useEffect(() => {
+    register("cvc", { required: "Cvc is required" });
+  }, [register]);
 
   const cardholderNameChanger = (e) => {
     setCardholderName(e.target.value);
@@ -51,6 +66,26 @@ const CardProvider = ({ children }) => {
     const formattedValue = rawValue.replace(/(.{4})/g, "$1 ").trim();
     setCardNumber(formattedValue);
   };
+
+  useEffect(() => {
+    setValue("cardholderName", cardholderName);
+  }, [cardholderName, setValue]);
+
+  useEffect(() => {
+    setValue("cardNumber", cardNumber);
+  }, [cardNumber, setValue]);
+
+  useEffect(() => {
+    setValue("month", month);
+  }, [month, setValue]);
+
+  useEffect(() => {
+    setValue("year", year);
+  }, [year, setValue]);
+
+  useEffect(() => {
+    setValue("cvc", cvc);
+  }, [cvc, setValue]);
 
   return (
     <CardContext.Provider
@@ -71,8 +106,6 @@ const CardProvider = ({ children }) => {
         errors,
         isSubmitting,
         onSubmit,
-        getValues,
-        func
       }}
     >
       {children}
