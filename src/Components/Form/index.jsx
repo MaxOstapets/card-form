@@ -31,7 +31,7 @@ const Form = () => {
           <input
             value={cardholderName}
             onChange={cardholderNameChanger}
-            className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3"
+            className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3 sm:w-72"
           />
           {errors.cardholderName && (
             <span className="text-red-700">
@@ -45,7 +45,7 @@ const Form = () => {
           <input
             value={cardNumber}
             onChange={cardNumberChanger}
-            className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3"
+            className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3 sm:w-72"
           />
           {errors.cardNumber && (
             <span className="text-red-700">{errors.cardNumber.message}</span>
@@ -61,10 +61,10 @@ const Form = () => {
                   placeholder="MM"
                   value={month}
                   onChange={monthChanger}
-                  className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"
+                  className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2 sm:w-16"
                 />
                 {errors.month && (
-                  <span className="text-red-700">{errors.month.message}</span>
+                  <span className="text-red-700 sm:text-xs">{errors.month.message}</span>
                 )}
               </div>
 
@@ -73,10 +73,10 @@ const Form = () => {
                   placeholder="YY"
                   value={year}
                   onChange={yearChanger}
-                  className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"
+                  className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2 sm:w-16"
                 />
                 {errors.year && (
-                  <span className="text-red-700">{errors.year.message}</span>
+                  <span className="text-red-700 sm:text-xs">{errors.year.message}</span>
                 )}
               </div>
             </div>
@@ -89,7 +89,7 @@ const Form = () => {
                 className="w-32 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"
               />
               {errors.cvc && (
-                <span className="text-red-700">{errors.cvc.message}</span>
+                <span className="text-red-700 sm:text-xs">{errors.cvc.message}</span>
               )}
             </div>
           </div>
@@ -99,7 +99,7 @@ const Form = () => {
       <button
         disabled={isSubmitting}
         type="submit"
-        className="w-80 h-10 rounded-sm bg-indigo-950 text-white text-lg flex items-center justify-center"
+        className="w-80 h-10 rounded-sm bg-indigo-950 text-white text-lg flex items-center justify-center sm:w-72"
       >
         {isSubmitting ? "Loading..." : "Submit"}
       </button>
