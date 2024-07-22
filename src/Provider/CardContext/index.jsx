@@ -1,6 +1,5 @@
 import { useState, createContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { sendCustomEmail } from "../../email";
 
 const CardContext = createContext();
 
