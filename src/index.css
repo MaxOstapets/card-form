@@ -7,7 +7,7 @@ body {
   background-repeat: no-repeat;
 }
 
-@media (max-width: 426px) {
+@media (max-width: 767px) {
   body {
     background: url(images/images/bg-main-mobile.png);
     background-repeat: no-repeat;
