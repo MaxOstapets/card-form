@@ -45,7 +45,7 @@ const Form = () => {
             className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3 sm:w-72"
           />
           {errors.cardholderName && (
-            <span className="text-red-700">
+            <span className="text-red-700 sm:text-xs">
               {errors.cardholderName.message}
             </span>
           )}
@@ -59,7 +59,9 @@ const Form = () => {
             className="w-80 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-3 sm:w-72"
           />
           {errors.cardNumber && (
-            <span className="text-red-700">{errors.cardNumber.message}</span>
+            <span className="text-red-700 sm:text-xs">
+              {errors.cardNumber.message}
+            </span>
           )}
         </div>
 
@@ -67,42 +69,44 @@ const Form = () => {
           <label className="text-sm">EXP. DATE MM/YY CVC</label>
           <div className="flex items-center justify-center gap-5">
             <div className="flex gap-2">
-              <div className="flex flex-col">
-                <input
-                  placeholder="MM"
-                  value={month}
-                  onChange={monthChanger}
-                  className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2 sm:w-16"
-                />
-                {errors.month && (
-                  <span className="text-red-700 sm:text-xs">{errors.month.message}</span>
-                )}
-              </div>
-
-              <div className="flex flex-col">
-                <input
-                  placeholder="YY"
-                  value={year}
-                  onChange={yearChanger}
-                  className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2 sm:w-16"
-                />
-                {errors.year && (
-                  <span className="text-red-700 sm:text-xs">{errors.year.message}</span>
-                )}
-              </div>
-            </div>
-
-            <div className="flex flex-col">
               <input
-                placeholder="CVC"
-                value={cvc}
-                onChange={cvcChanger}
-                className="w-32 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"
+                placeholder="MM"
+                value={month}
+                onChange={monthChanger}
+                className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2 sm:w-16"
               />
-              {errors.cvc && (
-                <span className="text-red-700 sm:text-xs">{errors.cvc.message}</span>
-              )}
+
+              <input
+                placeholder="YY"
+                value={year}
+                onChange={yearChanger}
+                className="w-20 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2 sm:w-16"
+              />
             </div>
+            <input
+              placeholder="CVC"
+              value={cvc}
+              onChange={cvcChanger}
+              className="w-32 h-10 border-indigo-800 border-2 rounded-sm focus:outline-none pl-2"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1">
+            {errors.month && (
+              <span className="text-red-700 sm:text-xs">
+                {errors.month.message}
+              </span>
+            )}
+            {errors.year && (
+              <span className="text-red-700 sm:text-xs">
+                {errors.year.message}
+              </span>
+            )}
+            {errors.cvc && (
+              <span className="text-red-700 sm:text-xs">
+                {errors.cvc.message}
+              </span>
+            )}
           </div>
         </div>
       </div>

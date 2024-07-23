@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 
 const CardContext = createContext();
 
+const numbers = /\d/;
+const characters = /[a-zA-Zа-яА-Я,./*+?^${}()]/;
+
 const CardProvider = ({ children }) => {
   const [cardholderName, setCardholderName] = useState();
   const [cardNumber, setCardNumber] = useState("");
@@ -17,36 +20,102 @@ const CardProvider = ({ children }) => {
     setValue,
     formState: { errors, isSubmitting },
   } = useForm();
-  
+
   const onSubmit = async (data) => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 700));
-      console.log("Sign up data: ", data);
-    } catch (error) {
-      setError("cardholderName", {
-        message: "Name is required",
-      });
-    }
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    console.log("Sign up data: ", data);
   };
-  
+
   useEffect(() => {
-    register("cardholderName", { required: "Cardholder name is required" });
+    register("cardholderName", {
+      required: "Cardholder name is required",
+      validate: (value) => {
+        if (numbers.test(value)) {
+          return "Cardholder name is not suposed to have a numbers";
+        }
+        return true;
+      },
+    });
   }, [register]);
 
   useEffect(() => {
-    register("cardNumber", { required: "Card number is required" });
+    register("cardNumber", {
+      required: "Card number is required",
+      minLength: {
+        value: 19,
+        message: "Card number must have at least 16 numbers",
+      },
+      maxLength: {
+        value: 19,
+        message: "Card number must not have at least more than 16 numbers",
+      },
+      validate: (value) => {
+        if (characters.test(value)) {
+          return "Card number is not suposed to have a letters";
+        }
+        return true;
+      },
+    });
   }, [register]);
 
   useEffect(() => {
-    register("month", { required: "Month is required" });
+    register("month", {
+      required: "Month is required",
+      minLength: {
+        value: 2,
+        message: "Month must have at least 2 numbers",
+      },
+      maxLength: {
+        value: 2,
+        message: "Month must not have at least more than 2 numbers",
+      },
+      validate: (value) => {
+        if (characters.test(value)) {
+          return "Month is not suposed to have a letters";
+        }
+        return true;
+      },
+    });
   }, [register]);
 
   useEffect(() => {
-    register("year", { required: "Year is required" });
+    register("year", {
+      required: "Year is required",
+      minLength: {
+        value: 2,
+        message: "Year must have at least 2 numbers",
+      },
+      maxLength: {
+        value: 2,
+        message: "Year must not have at least more than 2 numbers",
+      },
+      validate: (value) => {
+        if (characters.test(value)) {
+          return "Year is not suposed to have a letters";
+        }
+        return true;
+      },
+    });
   }, [register]);
 
   useEffect(() => {
-    register("cvc", { required: "Cvc is required" });
+    register("cvc", {
+      required: "Cvc is required",
+      minLength: {
+        value: 3,
+        message: "Cvc must have at least 3 numbers",
+      },
+      maxLength: {
+        value: 3,
+        message: "Cvc must not have at least more than 3 numbers",
+      },
+      validate: (value) => {
+        if (characters.test(value)) {
+          return "Cvc is not suposed to have a letters";
+        }
+        return true;
+      },
+    });
   }, [register]);
 
   const cardholderNameChanger = (e) => {
