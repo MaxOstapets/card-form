@@ -16,7 +16,7 @@ const CardProvider = ({ children }) => {
   const [currentComponent, setCurrentComponent] = useState("registration");
 
   const handleCurrentComponentChanger = () => {
-    setCurrentComponent(currentComponent = "registered");
+    setCurrentComponent("registered");
   };
 
   const {

@@ -4,6 +4,7 @@ import Cvc from "./Components/Сvc";
 // import Registered from "./Components/Registered";
 // import Button from "./Components/Button";
 import { useState } from "react";
+import React from 'react'
 
 const App = () => {
   const [currentComponent, setCurrentComponent] = useState("registration");

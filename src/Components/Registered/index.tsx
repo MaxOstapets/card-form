@@ -1,4 +1,5 @@
 import { GiConfirmed } from "react-icons/gi";
+import React from "react";
 
 const Registered = () => {
   return (
