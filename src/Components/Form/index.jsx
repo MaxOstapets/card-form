@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CardContext } from "../../Provider/CardContext";
 import { sendCustomEmail } from "../../email";
 
@@ -18,6 +18,8 @@ const Form = () => {
     errors,
     isSubmitting,
     onSubmit,
+    currentComponent,
+    handleCurrentComponentChanger,
   } = useContext(CardContext);
 
   const onFormSubmit = (data) => {
@@ -29,6 +31,8 @@ const Form = () => {
       cvc,
       cardholderName,
     });
+    console.log("State:", currentComponent);
+    handleCurrentComponentChanger
   };
 
   return (
@@ -109,15 +113,14 @@ const Form = () => {
             )}
           </div>
         </div>
+        <button
+          disabled={isSubmitting}
+          type="submit"
+          className="w-80 h-10 rounded-sm bg-indigo-950 text-white text-lg flex items-center justify-center sm:w-72"
+        >
+          {isSubmitting ? "Loading..." : "Submit"}
+        </button>
       </div>
-
-      <button
-        disabled={isSubmitting}
-        type="submit"
-        className="w-80 h-10 rounded-sm bg-indigo-950 text-white text-lg flex items-center justify-center sm:w-72"
-      >
-        {isSubmitting ? "Loading..." : "Submit"}
-      </button>
     </form>
   );
 };

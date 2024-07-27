@@ -13,6 +13,12 @@ const CardProvider = ({ children }) => {
   const [year, setYear] = useState();
   const [cvc, setCvc] = useState();
 
+  const [currentComponent, setCurrentComponent] = useState("registration");
+
+  const handleCurrentComponentChanger = () => {
+    setCurrentComponent(currentComponent = "registered");
+  };
+
   const {
     register,
     handleSubmit,
@@ -175,6 +181,8 @@ const CardProvider = ({ children }) => {
         errors,
         isSubmitting,
         onSubmit,
+        handleCurrentComponentChanger,
+        currentComponent,
       }}
     >
       {children}
